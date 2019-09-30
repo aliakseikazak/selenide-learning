@@ -2,6 +2,7 @@ package by.kazak.selenide.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import jdk.jfr.Description;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -15,6 +16,7 @@ public class GoogleTest {
     private static final String RESULTS_LOCATOR = "//div[@class='ellip']";
 
     @Test
+    @Description ("Simple UI test using Selenide Framework")
     public void userCanSearchKeywordWithGoogle () {
         open(GOOGLE_URL);
         $(By.name(SEARCH_INPUT)).setValue(SEARCH_PHRASE).pressEnter();
