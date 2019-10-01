@@ -1,4 +1,4 @@
-package by.kazak.selenide.tests;
+package by.kazak.selenide.example;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
