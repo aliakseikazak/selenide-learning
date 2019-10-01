@@ -6,6 +6,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Products {
 
+    public Products () {
+    }
+
     public void open () {
         Selenide.open("/");
     }
