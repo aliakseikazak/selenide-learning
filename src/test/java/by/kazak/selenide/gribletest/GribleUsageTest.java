@@ -13,6 +13,7 @@ public class GribleUsageTest extends BaseTest {
 
         String name = String.format("Product #%s", System.currentTimeMillis());
         products.add(name);
+//        products.shouldHave("Product1", name);
         products.open(name);
     }
 }

@@ -20,6 +20,14 @@ public class Products {
     }
 
     public void open (String name) {
-        new Section(name).click();
+        new Sections().find(name).click();
+    }
+
+    /*public void shouldHave (String name) {
+        new Section(name).shouldBe(visible);
+    }*/
+
+    public void shouldHave (String... names) {
+        new Sections().shouldBe(names);
     }
 }
