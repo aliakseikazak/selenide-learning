@@ -10,6 +10,8 @@ public class GribleUsageTest extends BaseTest {
     public void createTestTableBasedOnDataStorageForNewProduct () {
         Products products = new Products();
         products.open();
-        products.add("Product");
+
+        String name = String.format("Product #%s", System.currentTimeMillis());
+        products.add(name);
     }
 }
