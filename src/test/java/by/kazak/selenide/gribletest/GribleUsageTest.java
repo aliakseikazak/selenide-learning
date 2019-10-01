@@ -8,7 +8,7 @@ public class GribleUsageTest extends BaseTest {
 
     @Test
     public void createTestTableBasedOnDataStorageForNewProduct () {
-        Products products = new Products();
+        Products products = app.products();
         products.open();
 
         String name = String.format("Product #%s", System.currentTimeMillis());
