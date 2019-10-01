@@ -10,5 +10,6 @@ public class GribleUsageTest extends BaseTest {
     public void createTestTableBasedOnDataStorageForNewProduct () {
         Products products = new Products();
         products.open();
+        products.add("Product");
     }
 }
