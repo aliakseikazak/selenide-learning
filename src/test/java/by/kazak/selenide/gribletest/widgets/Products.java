@@ -18,4 +18,8 @@ public class Products {
         new Dialog().setFor("Name:", name).setFor("Path:", name).submit();
         new ConfirmationDialog().confirm();
     }
+
+    public void open (String name) {
+        new Section(name).click();
+    }
 }

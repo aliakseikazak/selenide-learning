@@ -5,7 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.withText;
 
 public class DialogInput {
-
     private final SelenideElement parent;
     private final String label;
 
