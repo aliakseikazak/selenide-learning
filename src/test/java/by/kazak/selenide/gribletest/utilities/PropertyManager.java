@@ -1,4 +1,4 @@
-package by.kazak.selenide.utilities;
+package by.kazak.selenide.gribletest.utilities;
 
 import java.util.ResourceBundle;
 
@@ -10,11 +10,11 @@ public class PropertyManager {
         td = ResourceBundle.getBundle("properties.test-data");
     }
 
-    public static String getConfigProperty (String s) {
-        return tc.getString(s);
+    public static String getConfigProperty (String property) {
+        return tc.getString(property);
     }
 
-    public static String getProperty (String s) {
-        return td.getString(s);
+    public static String getProperty (String property) {
+        return td.getString(property);
     }
 }

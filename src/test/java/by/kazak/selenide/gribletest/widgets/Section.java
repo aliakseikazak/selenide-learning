@@ -3,18 +3,25 @@ package by.kazak.selenide.gribletest.widgets;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-public class Section {
-    private final SelenideElement container;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$$;
 
-    public Section (SelenideElement container) {
-        this.container = container;
+public class Section {
+    private final String name;
+
+    public Section (String name) {
+        this.name = name;
+    }
+
+    private SelenideElement element () {
+        return $$(".section-cell").findBy(text(this.name));
     }
 
     public void click () {
-        this.container.click();
+        this.element().click();
     }
 
     public void shouldBe (Condition condition) {
-        this.container.shouldBe(condition);
+        this.element().shouldBe(condition);
     }
 }

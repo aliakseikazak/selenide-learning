@@ -14,7 +14,7 @@ public class DialogInput {
     }
 
     private SelenideElement element () {
-        return this.parent.$(withText(label)).parent().find("input");
+        return this.parent.$(withText(this.label)).parent().find("input");
     }
 
     public void setValue (String value) {
