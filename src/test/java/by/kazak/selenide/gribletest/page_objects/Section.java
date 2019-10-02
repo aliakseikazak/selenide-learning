@@ -1,9 +1,9 @@
 package by.kazak.selenide.gribletest.page_objects;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import ru.yandex.qatools.allure.annotations.Step;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class Section {
@@ -13,15 +13,13 @@ public class Section {
         this.name = name;
     }
 
-    private SelenideElement element () {
-        return $$(".section-cell").findBy(text(this.name));
+    @Step
+    public SelenideElement element () {
+        return $$(".section-cell").findBy(exactText(this.name));
     }
 
+    @Step
     public void click () {
-        this.element().click();
-    }
-
-    public void shouldBe (Condition condition) {
-        this.element().shouldBe(condition);
+        element().click();
     }
 }

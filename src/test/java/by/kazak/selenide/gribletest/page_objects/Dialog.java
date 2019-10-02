@@ -1,22 +1,27 @@
 package by.kazak.selenide.gribletest.page_objects;
 
 import com.codeborne.selenide.SelenideElement;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class Dialog {
-    private SelenideElement container;
+    private SelenideElement container = $(".ui-dialog");
+    private SelenideElement buttons = $(".dialog-buttons");
 
-    public Dialog () {
-        this.container = $(".ui-dialog");
-    }
-
-    public Dialog setFor (String label, String value) {
-        new DialogInput(this.container, label).setValue(value);
+    @Step
+    public Dialog setForLabel (String label, String value) {
+        inputFor(label).setValue(value);
         return this;
     }
 
-    public void submit () {
-        this.container.find("[id^=dialog-bt]").click();
+    @Step
+    public SelenideElement inputFor (String label) {
+        return new DialogInput(this.container, label).element();
+    }
+
+    @Step
+    public void confirm () {
+        buttons.find("[id^='dialog-btn'").click();
     }
 }

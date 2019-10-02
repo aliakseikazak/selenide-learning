@@ -1,23 +1,21 @@
 package by.kazak.selenide.gribletest.page_objects;
 
 import com.codeborne.selenide.SelenideElement;
+import ru.yandex.qatools.allure.annotations.Step;
 
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Selectors.*;
 
 public class DialogInput {
-    private final SelenideElement parent;
     private final String label;
+    private final SelenideElement container;
 
-    public DialogInput (SelenideElement parent, String label) {
-        this.parent = parent;
+    public DialogInput (SelenideElement container, String label) {
+        this.container = container;
         this.label = label;
     }
 
-    private SelenideElement element () {
-        return this.parent.$(withText(this.label)).parent().find("input");
-    }
-
-    public void setValue (String value) {
-        this.element().setValue(value);
+    @Step
+    public SelenideElement element () {
+        return this.container.find(withText(this.label)).find(byXpath("./following-sibling::*/input"));
     }
 }

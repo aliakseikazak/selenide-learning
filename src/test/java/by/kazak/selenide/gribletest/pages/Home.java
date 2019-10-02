@@ -4,31 +4,34 @@ import by.kazak.selenide.gribletest.page_objects.ConfirmationDialog;
 import by.kazak.selenide.gribletest.page_objects.Dialog;
 import by.kazak.selenide.gribletest.page_objects.Section;
 import com.codeborne.selenide.Selenide;
+import ru.yandex.qatools.allure.annotations.Step;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Home {
 
-    public Home () {
-    }
-
+    @Step
     public void open () {
         Selenide.open("/");
     }
 
-    public void add (String name) {
+    @Step
+    public void addProduct (String name) {
+        addProduct(name, name);
+    }
+
+    @Step
+    public void addProduct (String name, String path) {
         $("#btn-add-product").click();
-        new Dialog().setFor("Name:", name).setFor("Path:", name).submit();
+        new Dialog().setForLabel("Name:", name).setForLabel("Path:", path).confirm();
         new ConfirmationDialog().confirm();
     }
 
-    public Product open (String name) {
-        new Section(name).click();
-        return new Product();
-    }
-
-    public void shouldHave (String name) {
-        new Section(name).shouldBe(visible);
+    @Step
+    public Product openProduct (String productName) {
+        Section productSection = new Section(productName);
+        String productId = productSection.element().find(".product-item").getAttribute("id");
+        productSection.click();
+        return new Product(productId);
     }
 }
