@@ -1,8 +1,8 @@
 package by.kazak.selenide.gribletest.pages;
 
-import by.kazak.selenide.gribletest.widgets.ConfirmationDialog;
-import by.kazak.selenide.gribletest.widgets.Dialog;
-import by.kazak.selenide.gribletest.widgets.Section;
+import by.kazak.selenide.gribletest.page_objects.ConfirmationDialog;
+import by.kazak.selenide.gribletest.page_objects.Dialog;
+import by.kazak.selenide.gribletest.page_objects.Section;
 import com.codeborne.selenide.Selenide;
 
 import static com.codeborne.selenide.Condition.visible;

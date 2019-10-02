@@ -4,7 +4,7 @@ import by.kazak.selenide.gribletest.configs.BaseTest;
 import by.kazak.selenide.gribletest.pages.DataStorages;
 import by.kazak.selenide.gribletest.pages.Product;
 import by.kazak.selenide.gribletest.pages.Home;
-import by.kazak.selenide.gribletest.widgets.Table;
+import by.kazak.selenide.gribletest.page_objects.Table;
 import org.junit.Test;
 
 public class GribleUsageTest extends BaseTest {

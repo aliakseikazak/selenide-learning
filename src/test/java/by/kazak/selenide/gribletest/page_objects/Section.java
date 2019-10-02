@@ -1,4 +1,4 @@
-package by.kazak.selenide.gribletest.widgets;
+package by.kazak.selenide.gribletest.page_objects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

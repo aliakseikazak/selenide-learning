@@ -1,4 +1,4 @@
-package by.kazak.selenide.gribletest.widgets;
+package by.kazak.selenide.gribletest.page_objects;
 
 import static com.codeborne.selenide.Selenide.$;
 

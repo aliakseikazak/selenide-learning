@@ -1,6 +1,6 @@
 package by.kazak.selenide.gribletest.pages;
 
-import by.kazak.selenide.gribletest.widgets.Section;
+import by.kazak.selenide.gribletest.page_objects.Section;
 
 public class Product {
 
