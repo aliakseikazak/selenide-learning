@@ -2,18 +2,21 @@ package by.kazak.selenide.suites;
 
 import by.kazak.selenide.gribletest.configs.BaseTest;
 import by.kazak.selenide.gribletest.page_objects.ContextMenu;
-import by.kazak.selenide.gribletest.pages.DataStorages;
-import by.kazak.selenide.gribletest.pages.Product;
-import by.kazak.selenide.gribletest.pages.Home;
 import by.kazak.selenide.gribletest.page_objects.Table;
+import by.kazak.selenide.gribletest.pages.DataStorages;
+import by.kazak.selenide.gribletest.pages.Home;
+import by.kazak.selenide.gribletest.pages.Product;
 import by.kazak.selenide.gribletest.pages.TestTables;
 import org.junit.Test;
 
 import static by.kazak.selenide.core.Gherkin.*;
-import static com.codeborne.selenide.Selenide.*;
+import static by.kazak.selenide.gribletest.utilities.PropertyManager.getProperty;
+import static com.codeborne.selenide.Selenide.refresh;
 import static java.util.Arrays.asList;
 
 public class GribleUsageTest extends BaseTest {
+    private String[] firstUser = { getProperty("user1.name"), getProperty("user1.password") };
+    private String[] secondUser = { getProperty("user2.name"), getProperty("user2.password") };
 
     @Test
     public void createTestTableBasedOnDataStorageForNewProduct () {
@@ -44,12 +47,12 @@ public class GribleUsageTest extends BaseTest {
         firstTable.addColumnAfter(0, "password");
 
         THEN("Fill existing table row with data");
-        firstTable.row(0).fill("John", "qwerty");
-        firstTable.shouldHaveRows(asList("John", "qwerty"));
+        firstTable.row(0).fill(firstUser[0], firstUser[1]);
+        firstTable.shouldHaveRows(asList(firstUser[0], firstUser[1]));
 
         AND("Add one more row with data");
-        firstTable.addRowAfter(0).fill("Jane", "ytrewq");
-        firstTable.shouldHaveRows(asList("John", "qwerty"), asList("Jane", "ytrewq"));
+        firstTable.addRowAfter(0).fill(secondUser[0], secondUser[1]);
+        firstTable.shouldHaveRows(asList(firstUser[0], firstUser[1]), asList(secondUser[0], secondUser[1]));
 
         THEN("Save changes");
         dataStorages.save();
@@ -83,7 +86,7 @@ public class GribleUsageTest extends BaseTest {
 
         EXPECT("Connection works by showing connected data in a cell tooltip (on hover)");
         secondTable.toolTip().shouldHaveKeyRowCells("", "username", "password");
-        secondTable.toolTip().shouldHaveValueRowCells("1", "John", "qwerty");
+        secondTable.toolTip().shouldHaveValueRowCells("1", firstUser[0], firstUser[1]);
 
         THEN("Adds one more column for data and fill its cell");
         secondTable.addColumnAfter(0, "login valid?");
@@ -100,7 +103,7 @@ public class GribleUsageTest extends BaseTest {
 
         secondTable.row(1).cell(0).hover();
         secondTable.toolTip().shouldHaveKeyRowCells("", "username", "password");
-        secondTable.toolTip().shouldHaveValueRowCells("2", "Jane", "ytrewq");
+        secondTable.toolTip().shouldHaveValueRowCells("2", secondUser[0], secondUser[1]);
 
         THEN("Save changes");
         testTables.save();
